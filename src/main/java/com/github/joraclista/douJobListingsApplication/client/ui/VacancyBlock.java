@@ -6,7 +6,10 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.Label;
+
+import static com.google.gwt.user.client.Window.Location.assign;
 
 /**
  * Created by Alisa
@@ -25,9 +28,13 @@ public class VacancyBlock extends Composite {
     Label cities;
     @UiField
     Label info;
+    @UiField
+    FocusPanel container;
 
     public VacancyBlock(JobVacancy vacancy) {
         initWidget(ourUiBinder.createAndBindUi(this));
+
+        container.addClickHandler(event -> assign(vacancy.getUrl()));
         title.setText(vacancy.getPosition());
         company.setText(vacancy.getCompany());
         cities.setText(vacancy.getCities());

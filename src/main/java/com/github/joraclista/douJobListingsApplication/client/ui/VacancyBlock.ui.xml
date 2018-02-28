@@ -33,10 +33,15 @@
         }
 
     </ui:style>
-    <g:FlowPanel addStyleNames="{style.vacancy-block}" >
-        <g:Label addStyleNames="{style.title}" ui:field="title"/>
-        <g:Label addStyleNames="{style.company}" ui:field="company"/>
-        <g:Label addStyleNames="{style.cities}" ui:field="cities"/>
-        <g:Label addStyleNames="{style.info}" ui:field="info"/>
+    <g:FlowPanel>
+        <g:FocusPanel ui:field="container" addStyleNames="{style.vacancy-block}" >
+            <g:FlowPanel>
+                <g:Label addStyleNames="{style.title}" ui:field="title"/>
+                <g:Label addStyleNames="{style.company}" ui:field="company"/>
+                <g:Label addStyleNames="{style.cities}" ui:field="cities"/>
+                <g:Label addStyleNames="{style.info}" ui:field="info"/>
+            </g:FlowPanel>
+        </g:FocusPanel>
     </g:FlowPanel>
+
 </ui:UiBinder>

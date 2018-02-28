@@ -1,7 +1,11 @@
 package com.github.joraclista.douJobListingsApplication.client;
 
+import com.github.joraclista.douJobListingsApplication.shared.JobVacancy;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import java.util.List;
+
 public interface DouJobListingsApplicationServiceAsync {
-    void getMessage(String msg, AsyncCallback<String> async);
+
+    void getJobs(String city, String category, AsyncCallback<List<JobVacancy>> async);
 }

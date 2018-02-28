@@ -1,0 +1,42 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style>
+        .title {
+            color: black;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            color: #607D8B;
+        }
+
+        .cities {
+            color: #607D8B;
+        }
+
+        .info {
+            color: #607D8B;
+            margin-top: 5px;
+        }
+
+        .vacancy-block {
+            display: flex;
+            width: 80%;
+            height: 100px;
+            flex-direction: column;
+            background: rgba(236, 239, 241, 0.37);
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);;
+            padding: 10px 20px 20px;
+            margin: 10px;
+        }
+
+    </ui:style>
+    <g:FlowPanel addStyleNames="{style.vacancy-block}" >
+        <g:Label addStyleNames="{style.title}" ui:field="title"/>
+        <g:Label addStyleNames="{style.company}" ui:field="company"/>
+        <g:Label addStyleNames="{style.cities}" ui:field="cities"/>
+        <g:Label addStyleNames="{style.info}" ui:field="info"/>
+    </g:FlowPanel>
+</ui:UiBinder>

@@ -1,0 +1,14 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style>
+        .vacancies-block {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+        }
+
+    </ui:style>
+    <g:FlowPanel>
+        <g:FlowPanel ui:field="container" addStyleNames="{style.vacancies-block}"/>
+    </g:FlowPanel>
+</ui:UiBinder>

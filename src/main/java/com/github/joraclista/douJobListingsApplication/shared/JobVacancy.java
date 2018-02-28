@@ -2,6 +2,8 @@ package com.github.joraclista.douJobListingsApplication.shared;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -9,8 +11,9 @@ import java.io.Serializable;
  * Created by Alisa
  * version 1.0.
  */
-//@Data
+@Data
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class JobVacancy implements Serializable {
     private String company;
@@ -19,9 +22,9 @@ public class JobVacancy implements Serializable {
     private String info;
     private String url;
 
-    public JobVacancy() {
-    }
-
+//    public JobVacancy() {
+//    }
+//
     public String getCompany() {
         return company;
     }

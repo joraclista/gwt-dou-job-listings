@@ -24,8 +24,8 @@ public class DouJobListingsApplicationServiceImpl extends RemoteServiceServlet i
 
             return vacanciesList.stream()
                     .map(element -> {
-                        Elements title = vacanciesList.get(0).select("div.title");
-                        Elements shInfo = vacanciesList.get(0).select("div.sh-info");
+                        Elements title = element.select("div.title");
+                        Elements shInfo = element.select("div.sh-info");
 
                         return JobVacancy.builder()
                                 .company(title.select("a[href].company").text())

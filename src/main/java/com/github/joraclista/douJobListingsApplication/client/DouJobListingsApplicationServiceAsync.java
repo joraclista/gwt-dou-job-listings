@@ -8,4 +8,6 @@ import java.util.List;
 public interface DouJobListingsApplicationServiceAsync {
 
     void getJobs(String city, String category, AsyncCallback<List<JobVacancy>> async);
+
+    void getCities(AsyncCallback<List<String>> async);
 }

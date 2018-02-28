@@ -12,6 +12,7 @@ public interface DouJobListingsApplicationService extends RemoteService {
 
     List<JobVacancy> getJobs(String city, String category);
 
+    List<String> getCities();
 
     class App {
         private static DouJobListingsApplicationServiceAsync ourInstance = GWT.create(DouJobListingsApplicationService.class);

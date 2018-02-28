@@ -1,0 +1,48 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style>
+        .main {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .selected {
+            color: black;
+            font-weight: bold;
+            background: rgba(236, 239, 241, 0.37);
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+            padding: 7px;
+            margin: 5px;
+        }
+
+        .values {
+            color: #607D8B;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .values div {
+            color: #607D8B;
+            background: rgba(236, 239, 241, 0.37);
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+            padding: 7px;
+            margin: 5px;
+        }
+
+        .heading {
+            color: #607D8B;
+            padding: 7px;
+            margin: 5px;
+        }
+        .heading:after {
+            content: ":";
+        }
+    </ui:style>
+
+    <g:FlowPanel addStyleNames="{style.main}">
+        <g:Label addStyleNames="{style.heading}" ui:field="heading"/>
+        <g:Label addStyleNames="{style.selected}" ui:field="selected"/>
+        <g:FlowPanel addStyleNames="{style.values}" ui:field="values" visible="false"/>
+    </g:FlowPanel>
+</ui:UiBinder>

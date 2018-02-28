@@ -43,6 +43,7 @@ public class DouJobListingsApplication implements EntryPoint {
 
         categorySelector.setModel(Arrays.asList("Java", "Javascript", ".Net", "Scala", "Node.js", "Python"));
 
+        RootPanel.get("slot1").add(citySelector);
         RootPanel.get("slot1").add(categorySelector);
         RootPanel.get("slot1").add(jobResultsPanel);
 

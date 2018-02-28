@@ -1,6 +1,10 @@
 package com.github.joraclista.douJobListingsApplication.client.ui;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -13,8 +17,9 @@ import java.util.List;
  * Created by Alisa
  * version 1.0.
  */
-public abstract class HorizontalDropDown<T> extends Composite {
-    interface HorizontalDropDownUiBinder extends UiBinder<FlowPanel, HorizontalDropDown> {
+public abstract class HorizontalSelector<T> extends Composite implements HasValueChangeHandlers<T> {
+
+    interface HorizontalDropDownUiBinder extends UiBinder<FlowPanel, HorizontalSelector> {
     }
 
     private static HorizontalDropDownUiBinder ourUiBinder = GWT.create(HorizontalDropDownUiBinder.class);
@@ -28,14 +33,20 @@ public abstract class HorizontalDropDown<T> extends Composite {
     @UiField
     Label heading;
 
-    public HorizontalDropDown(List<T> items, T selectedItem, String heading) {
+    public HorizontalSelector(String heading) {
         initWidget(ourUiBinder.createAndBindUi(this));
-        this.items = items;
-        this.selectedItem = selectedItem;
         this.heading.setText(heading);
+        this.selected.addClickHandler(event -> values.setVisible(true));
+    }
 
+    public void setModel(List<T> items) {
+        if (items.isEmpty())
+            return;
+
+        this.items = items;
         this.values.clear();
-
+        this.selectedItem = items.get(0);
+        this.selected.setText(getLabel(selectedItem));
         items.stream()
                 .map(item -> {
                     Label label = new Label(getLabel(item));
@@ -43,6 +54,7 @@ public abstract class HorizontalDropDown<T> extends Composite {
                         values.setVisible(false);
                         this.selected.setText(getLabel(item));
                         this.selectedItem = item;
+                        ValueChangeEvent.fire(HorizontalSelector.this, item);
 
                     });
                     return label;
@@ -50,14 +62,17 @@ public abstract class HorizontalDropDown<T> extends Composite {
                 })
                 .forEach(label -> values.add(label));
 
-        this.selected.setText(getLabel(selectedItem));
-        this.selected.addClickHandler(event -> values.setVisible(true));
     }
 
     protected abstract String getLabel(T item);
 
     public T getSelectedItem() {
         return selectedItem;
+    }
+
+    @Override
+    public HandlerRegistration addValueChangeHandler(ValueChangeHandler<T> handler) {
+        return super.addHandler(handler, ValueChangeEvent.getType());
     }
 
 }

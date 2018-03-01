@@ -1,7 +1,7 @@
 # gwt-dou-job-listings
 [![Build Status](https://travis-ci.org/joraclista/gwt-dou-job-listings.svg?branch=master)](https://travis-ci.org/joraclista/gwt-dou-job-listings)
 [![Dependency Status](https://www.versioneye.com/user/projects/5a97c75e0fb24f2d1f43e601/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5a97c75e0fb24f2d1f43e601)
-
+[![Known Vulnerabilities](https://snyk.io/test/github/joraclista/gwt-dou-job-listings/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/joraclista/gwt-dou-job-listings?severity=high&severity=medium&severity=low)
 
 dou.ua job listings made with gwt
 

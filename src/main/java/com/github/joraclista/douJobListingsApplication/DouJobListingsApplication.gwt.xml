@@ -2,16 +2,16 @@
         "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
 <module rename-to="DouJobListingsApplication">
 
-    <!-- Inherit the core Web Toolkit stuff.                  -->
+
     <inherits name='com.google.gwt.user.User'/>
 
-    <!-- Specify the app entry point class.                   -->
+
     <entry-point class='com.github.joraclista.douJobListingsApplication.client.DouJobListingsApplication'/>
 
 
-    <!-- Specify the app servlets.                   -->
+
     <servlet path='/DouJobsService'
-             class='com.github.joraclista.douJobListingsApplication.server.DouJobListingsApplicationServiceImpl'/>
+             class='com.github.joraclista.douJobListingsApplication.server.DouJobsServiceImpl'/>
 
     <source path='client'/>
     <source path='shared'/>

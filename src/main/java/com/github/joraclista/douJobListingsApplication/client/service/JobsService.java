@@ -1,7 +1,8 @@
-package com.github.joraclista.douJobListingsApplication.client;
+package com.github.joraclista.douJobListingsApplication.client.service;
 
-import com.github.joraclista.douJobListingsApplication.shared.DouJobsServiceAsync;
-import com.github.joraclista.douJobListingsApplication.shared.JobVacancy;
+import com.github.joraclista.douJobListingsApplication.client.BaseCallback;
+import com.github.joraclista.douJobListingsApplication.shared.service.DouJobsServiceAsync;
+import com.github.joraclista.douJobListingsApplication.shared.model.JobVacancy;
 
 import java.util.List;
 

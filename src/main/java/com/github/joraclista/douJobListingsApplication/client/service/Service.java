@@ -1,7 +1,7 @@
-package com.github.joraclista.douJobListingsApplication.client;
+package com.github.joraclista.douJobListingsApplication.client.service;
 
-import com.github.joraclista.douJobListingsApplication.shared.DouJobsService;
-import com.github.joraclista.douJobListingsApplication.shared.DouJobsServiceAsync;
+import com.github.joraclista.douJobListingsApplication.shared.service.DouJobsService;
+import com.github.joraclista.douJobListingsApplication.shared.service.DouJobsServiceAsync;
 import com.google.gwt.core.client.GWT;
 
 /**

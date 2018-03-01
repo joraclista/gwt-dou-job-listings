@@ -1,5 +1,7 @@
 package com.github.joraclista.douJobListingsApplication.client;
 
+import com.github.joraclista.douJobListingsApplication.client.service.JobsService;
+import com.github.joraclista.douJobListingsApplication.client.service.ListsService;
 import com.github.joraclista.douJobListingsApplication.client.ui.HorizontalSelector;
 import com.github.joraclista.douJobListingsApplication.client.ui.JobResultsPanel;
 import com.google.gwt.core.client.EntryPoint;

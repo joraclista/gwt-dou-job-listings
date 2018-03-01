@@ -1,4 +1,4 @@
-package com.github.joraclista.douJobListingsApplication.shared;
+package com.github.joraclista.douJobListingsApplication.shared.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

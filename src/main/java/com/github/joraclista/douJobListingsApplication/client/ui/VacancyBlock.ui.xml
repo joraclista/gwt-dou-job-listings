@@ -19,6 +19,11 @@
         .info {
             color: #607D8B;
             margin-top: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
         }
 
         .vacancy-block {

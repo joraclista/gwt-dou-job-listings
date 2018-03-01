@@ -1,6 +1,6 @@
 package com.github.joraclista.douJobListingsApplication.client.ui;
 
-import com.github.joraclista.douJobListingsApplication.shared.JobVacancy;
+import com.github.joraclista.douJobListingsApplication.shared.model.JobVacancy;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;

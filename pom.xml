@@ -74,10 +74,10 @@
                             <goal>war</goal>
                         </goals>
                         <configuration>
-                            <webXml>war/WEB-INF/web.xml</webXml>
+                            <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
                             <webResources>
                                 <resource>
-                                    <directory>war</directory>
+                                    <directory>src/main/webapp</directory>
                                     <includes>
                                         <include>**/*.html</include>
                                         <include>**/*.css</include>

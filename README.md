@@ -23,5 +23,6 @@ just type ```mvn clean package```
  ### Run locally in Intellij IDEA
    * Check you have GWT plugin installed
    * Setup GWT application configuration and run
+    <img src="/pics/idea-setup.png" alt="screenshot" title="screenshot"  height="400" />
  
  

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joraclista/gwt-dou-job-listings.svg?branch=master)](https://travis-ci.org/joraclista/gwt-dou-job-listings)
+
 # gwt-dou-job-listings
 dou.ua job listings made with gwt
 

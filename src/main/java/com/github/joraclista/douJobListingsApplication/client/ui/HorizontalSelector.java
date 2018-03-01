@@ -12,12 +12,13 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * Created by Alisa
  * version 1.0.
  */
-public abstract class HorizontalSelector<T> extends Composite implements HasValueChangeHandlers<T> {
+public class HorizontalSelector<T> extends Composite implements HasValueChangeHandlers<T> {
 
     interface HorizontalDropDownUiBinder extends UiBinder<FlowPanel, HorizontalSelector> {
     }
@@ -26,6 +27,7 @@ public abstract class HorizontalSelector<T> extends Composite implements HasValu
 
     private T selectedItem;
     private List<T> items;
+    private Function<T, String> labelFunction = item -> item + "";
     @UiField
     FlowPanel values;
     @UiField
@@ -33,10 +35,19 @@ public abstract class HorizontalSelector<T> extends Composite implements HasValu
     @UiField
     Label heading;
 
-    public HorizontalSelector(String heading) {
+    public HorizontalSelector() {
         initWidget(ourUiBinder.createAndBindUi(this));
-        this.heading.setText(heading);
         this.selected.addClickHandler(event -> values.setVisible(true));
+    }
+
+    public HorizontalSelector<T> withLabelFunction(Function<T, String> labelFunction) {
+        this.labelFunction = labelFunction;
+        return this;
+    }
+
+    public HorizontalSelector<T> withHeading(String heading) {
+        this.heading.setText(heading);
+        return this;
     }
 
     public void setModel(List<T> items) {
@@ -64,7 +75,9 @@ public abstract class HorizontalSelector<T> extends Composite implements HasValu
 
     }
 
-    protected abstract String getLabel(T item);
+    private String getLabel(T item) {
+        return labelFunction.apply(item);
+    }
 
     public T getSelectedItem() {
         return selectedItem;

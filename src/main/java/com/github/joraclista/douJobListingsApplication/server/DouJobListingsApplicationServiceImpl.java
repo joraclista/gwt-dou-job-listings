@@ -1,7 +1,7 @@
 package com.github.joraclista.douJobListingsApplication.server;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.joraclista.douJobListingsApplication.client.DouJobListingsApplicationService;
+import com.github.joraclista.douJobListingsApplication.shared.DouJobsService;
 import com.github.joraclista.douJobListingsApplication.shared.JobVacancy;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.jsoup.Jsoup;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //@Slf4j
-public class DouJobListingsApplicationServiceImpl extends RemoteServiceServlet implements DouJobListingsApplicationService {
+public class DouJobListingsApplicationServiceImpl extends RemoteServiceServlet implements DouJobsService {
 
 
 
@@ -46,6 +46,11 @@ public class DouJobListingsApplicationServiceImpl extends RemoteServiceServlet i
     @Override
     public List<String> getCities() {
         return getListFromJson("cities.json");
+    }
+
+    @Override
+    public List<String> getCategories() {
+        return getListFromJson("categories.json");
     }
 
     private List<String> getListFromJson(String jsonFileName) {

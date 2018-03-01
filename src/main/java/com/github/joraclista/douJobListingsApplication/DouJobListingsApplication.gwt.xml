@@ -10,8 +10,9 @@
 
 
     <!-- Specify the app servlets.                   -->
-    <servlet path='/DouJobListingsApplicationService'
+    <servlet path='/DouJobsService'
              class='com.github.joraclista.douJobListingsApplication.server.DouJobListingsApplicationServiceImpl'/>
+
     <source path='client'/>
     <source path='shared'/>
 

@@ -2,20 +2,20 @@ package com.github.joraclista.douJobListingsApplication.client;
 
 import com.github.joraclista.douJobListingsApplication.client.ui.HorizontalSelector;
 import com.github.joraclista.douJobListingsApplication.client.ui.JobResultsPanel;
-import com.github.joraclista.douJobListingsApplication.shared.JobVacancy;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootPanel;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
  */
 public class DouJobListingsApplication implements EntryPoint {
 
-    private DouJobListingsApplicationServiceAsync service = DouJobListingsApplicationService.App.getInstance();
+    private final String ROOT_PANEL_SLOT_ID = "slot";
+
+    private ListsService listsService = new ListsService();
+    private JobsService jobsService = new JobsService();
 
     private HorizontalSelector<String> citySelector;
     private HorizontalSelector<String> categorySelector;
@@ -25,65 +25,51 @@ public class DouJobListingsApplication implements EntryPoint {
      * This is the entry point method.
      */
     public void onModuleLoad() {
+        createUI();
+
+        getLists();
+    }
+
+    private void createUI() {
         jobResultsPanel = new JobResultsPanel();
 
-        citySelector = new HorizontalSelector<String>("City") {
-            @Override
-            protected String getLabel(String item) {
-                return item;
-            }
-        };
+        citySelector = new HorizontalSelector<String>()
+                .withHeading("City")
+                .withLabelFunction(item -> item);
 
-        categorySelector = new HorizontalSelector<String>("Category") {
-            @Override
-            protected String getLabel(String item) {
-                return item;
-            }
-        };
+        categorySelector = new HorizontalSelector<String>()
+                .withHeading("Category")
+                .withLabelFunction(item -> item);
 
-        categorySelector.setModel(Arrays.asList("Java", "Javascript", ".Net", "Scala", "Node.js", "Python"));
+        addToRoot(citySelector);
+        addToRoot(categorySelector);
+        addToRoot(jobResultsPanel);
 
-        RootPanel.get("slot1").add(citySelector);
-        RootPanel.get("slot1").add(categorySelector);
-        RootPanel.get("slot1").add(jobResultsPanel);
+        citySelector.addValueChangeHandler(getUiModelChangeHandler());
+        categorySelector.addValueChangeHandler(getUiModelChangeHandler());
 
-        citySelector.addValueChangeHandler(event -> updateResults(citySelector.getSelectedItem(), categorySelector.getSelectedItem()));
-        categorySelector.addValueChangeHandler(event -> updateResults(citySelector.getSelectedItem(), categorySelector.getSelectedItem()));
-
-        getCities();
     }
 
-    private void updateResults(String city, String category) {
-        service.getJobs(city, category, new AsyncCallback<List<JobVacancy>>() {
-            @Override
-            public void onFailure(Throwable caught) {
-                System.out.println("failure");
-            }
-
-            @Override
-            public void onSuccess(List<JobVacancy> result) {
-                System.out.println("onSuccess");
-                jobResultsPanel.setResults(result);
-            }
-        });
+    private ValueChangeHandler<String> getUiModelChangeHandler() {
+        return event -> updateUI(citySelector.getSelectedItem(), categorySelector.getSelectedItem());
     }
 
-    private void getCities() {
+    private void addToRoot(IsWidget widget) {
+        RootPanel.get(ROOT_PANEL_SLOT_ID).add(widget);
+    }
 
-        service.getCities(new AsyncCallback<List<String>>() {
-            @Override
-            public void onFailure(Throwable caught) {
-                System.out.println("failure");
-            }
+    private void updateUI(String city, String category) {
+        jobsService.getJobs(city, category, new BaseCallback<>(caught -> {}, result -> jobResultsPanel.setResults(result)));
+    }
 
-            @Override
-            public void onSuccess(List<String> cities) {
-                System.out.println("onSuccess");
-                citySelector.setModel(cities);
-
-                updateResults(citySelector.getSelectedItem(), categorySelector.getSelectedItem());
-            }
-        });
+    private void getLists() {
+        listsService.getCities(new BaseCallback<>(caught -> {}, result -> {
+                citySelector.setModel(result);
+                listsService.getCategories(new BaseCallback<>(caught -> {}, _result -> {
+                    categorySelector.setModel(_result);
+                    updateUI(citySelector.getSelectedItem(), categorySelector.getSelectedItem());
+                }));
+        }));
     }
 
 }

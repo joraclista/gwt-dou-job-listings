@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <servlet>
-        <servlet-name>DouJobListingsApplicationService</servlet-name>
+        <servlet-name>DouJobsService</servlet-name>
         <servlet-class>com.github.joraclista.douJobListingsApplication.server.DouJobListingsApplicationServiceImpl</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>DouJobListingsApplicationService</servlet-name>
-        <url-pattern>/DouJobListingsApplication/DouJobListingsApplicationService</url-pattern>
+        <servlet-name>DouJobsService</servlet-name>
+        <url-pattern>/DouJobListingsApplication/DouJobsService</url-pattern>
     </servlet-mapping>
 </web-app>
